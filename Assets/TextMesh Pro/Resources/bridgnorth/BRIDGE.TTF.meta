@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 81ec4ac64aabde04d8a73eb5eba3da31
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bridgnorth
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d0e7b39250d0e3341b95515f22470fde, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

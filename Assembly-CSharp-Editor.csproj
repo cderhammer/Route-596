@@ -36,10 +36,16 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Environment\Free Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Editor\ReadmeEditor.cs" />
-     <Compile Include="Assets\Environment\Free Assets\Polytope Studio\Lowpoly Medieval Characters\Sources\Scripts\Editor\PT_Create_Prefab_Editor.cs" />
-     <Compile Include="Assets\Environment\Free Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\Scripts\Editor\PackageChecker\PackageChecker.cs" />
-     <None Include="Assets\Environment\Free Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\Scripts\Editor\PackageChecker\PackageImportList.txt" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\RagdollController.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\JointController.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\WeightCalculator.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\Ragdoller.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\RagdollPart.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\ColliderController.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\RagdollProperties.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\ColliderHelper.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\BoneHelper.cs" />
+     <Compile Include="Assets\Character stuff\BzKovSoft\RagdollHelper\Editor\RigidController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

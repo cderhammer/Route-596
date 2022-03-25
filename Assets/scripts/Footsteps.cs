@@ -21,6 +21,14 @@ public class Footsteps : MonoBehaviour
         AudioClip clip = GetRandomClip();
         audioSource.PlayOneShot(clip);
     }
+    private void jump(){
+        AudioClip clip = GetRandomClip();
+        audioSource.PlayOneShot(clip);
+    }
+    private void jumpLand(){
+        AudioClip clip = GetRandomClip();
+        audioSource.PlayOneShot(clip);
+    }
     private AudioClip GetRandomClip(){
         return clips[UnityEngine.Random.Range(0, clips.Length)];
     }

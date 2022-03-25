@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Transform cameraTransform;
+    [SerializeField]
+    private Transform respawnPoint;
 
     public GameObject gameOverScreen;
+    public GameObject pauseScreen;
+    public GameObject cameraOnDeath;
 
     private Animator animator;
     private CharacterController characterController;
@@ -149,11 +154,11 @@ public class PlayerMovement : MonoBehaviour
             FindObjectOfType<GameManager>().EndGame();
             gameOverScreen.SetActive(true);
 
-           /* if (characterController.isGrounded)
-            {
-                characterController.enabled = false;
-            }
-*/
+            /* if (characterController.isGrounded)
+             {
+                 characterController.enabled = false;
+             }
+ */
         }
     }
 
@@ -170,11 +175,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("hit");
             FindObjectOfType<GameManager>().EndGame();
             gameOverScreen.SetActive(true);
+            Destroy(pauseScreen, 0f);
+            Destroy(cameraOnDeath, 0f);
 
             ySpeed += gravity * Time.deltaTime;
 
-            //characterController.enabled = false;
-
+            StartCoroutine(ExecuteAfterTime(1.10f));
+            // characterController.transform.position = respawnPoint.transform.position;
+            // characterController.enabled = false;
         }
     }
     // uses root motion to move character
@@ -206,6 +214,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         return velocity;
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject, 0f);
+        // Code to execute after the delay
+        // characterController.transform.position = respawnPoint.position;
     }
 
     // makes mouse not visible during game

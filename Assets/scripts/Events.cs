@@ -8,7 +8,8 @@ public class Events : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void MainMenu(){
+    public void MainMenu()
+    {
         SceneManager.LoadScene(0);
     }
 }

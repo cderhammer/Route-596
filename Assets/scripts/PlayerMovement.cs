@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,12 +17,17 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private Transform cameraTransform;
+
     [SerializeField]
+    TextMeshProUGUI deathCounter_TMP;
+
+
     private Transform respawnPoint;
 
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
     public GameObject cameraOnDeath;
+    public int deaths;
 
     private Animator animator;
     private CharacterController characterController;
@@ -39,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset;
+        deaths = PlayerPrefs.GetInt("Deaths");
         isDead = false;
     }
 
@@ -153,6 +160,12 @@ public class PlayerMovement : MonoBehaviour
             animator.Play("Falling Forward Death");
             FindObjectOfType<GameManager>().EndGame();
             gameOverScreen.SetActive(true);
+            UIManager.instance.deathCounter++;
+            UIManager.instance.updateDeathCounterUI();
+            // PlayerPrefs.SetInt("Deaths", deaths);
+            // PlayerPrefs.GetInt("Deaths");
+            // deaths++;
+            // setDeathCounter();
 
             /* if (characterController.isGrounded)
              {
@@ -175,6 +188,10 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("hit");
             FindObjectOfType<GameManager>().EndGame();
             gameOverScreen.SetActive(true);
+            UIManager.instance.deathCounter++;
+            UIManager.instance.updateDeathCounterUI();
+            // PlayerPrefs.SetInt("Deaths", deaths);
+            // PlayerPrefs.GetInt("Deaths");
             Destroy(pauseScreen, 0f);
             Destroy(cameraOnDeath, 0f);
 
@@ -183,6 +200,9 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(ExecuteAfterTime(1.10f));
             // characterController.transform.position = respawnPoint.transform.position;
             // characterController.enabled = false;
+
+            // deaths++;
+            // setDeathCounter();
         }
     }
     // uses root motion to move character
@@ -222,6 +242,11 @@ public class PlayerMovement : MonoBehaviour
         Destroy(gameObject, 0f);
         // Code to execute after the delay
         // characterController.transform.position = respawnPoint.position;
+    }
+
+    void setDeathCounter()
+    {
+        deathCounter_TMP.text = deaths.ToString();
     }
 
     // makes mouse not visible during game

@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Transform respawnPoint;
+    public Transform respawn = null;
 
     public GameObject gameOverScreen;
     public GameObject pauseScreen;
@@ -160,18 +161,11 @@ public class PlayerMovement : MonoBehaviour
             animator.Play("Falling Forward Death");
             FindObjectOfType<GameManager>().EndGame();
             gameOverScreen.SetActive(true);
-            UIManager.instance.deathCounter++;
-            UIManager.instance.updateDeathCounterUI();
-            // PlayerPrefs.SetInt("Deaths", deaths);
-            // PlayerPrefs.GetInt("Deaths");
-            // deaths++;
-            // setDeathCounter();
 
-            /* if (characterController.isGrounded)
-             {
-                 characterController.enabled = false;
-             }
- */
+            Destroy(pauseScreen, 0f);
+            Destroy(cameraOnDeath, 0f);
+
+            StartCoroutine(ExecuteAfterTime(1.10f));
         }
     }
 
@@ -188,10 +182,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("hit");
             FindObjectOfType<GameManager>().EndGame();
             gameOverScreen.SetActive(true);
-            UIManager.instance.deathCounter++;
-            UIManager.instance.updateDeathCounterUI();
-            // PlayerPrefs.SetInt("Deaths", deaths);
-            // PlayerPrefs.GetInt("Deaths");
+
+
             Destroy(pauseScreen, 0f);
             Destroy(cameraOnDeath, 0f);
 
@@ -201,8 +193,6 @@ public class PlayerMovement : MonoBehaviour
             // characterController.transform.position = respawnPoint.transform.position;
             // characterController.enabled = false;
 
-            // deaths++;
-            // setDeathCounter();
         }
     }
     // uses root motion to move character
@@ -239,9 +229,15 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
+        yield return null;
         Destroy(gameObject, 0f);
-        // Code to execute after the delay
-        // characterController.transform.position = respawnPoint.position;
+
+        if (respawn != null)
+        {
+            transform.position = respawn.position;
+            transform.rotation = Quaternion.identity;
+        }
+
     }
 
     void setDeathCounter()

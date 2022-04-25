@@ -7,6 +7,10 @@ public class CamRecenter : MonoBehaviour
 {
 
     private CinemachineFreeLook cam;
+    // public float clampMin;
+    // public float clampMax;
+    // public float pitch;
+    // public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +20,18 @@ public class CamRecenter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("CameraRecenter") == 1){
+        /*
+        pitch += speed * Input.GetAxis("Mouse Y");
+        pitch = Mathf.Clamp(pitch, clampMin, clampMax);
+        cam.GetRig(1).GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset.y = pitch;
+        */
+
+        if (Input.GetAxis("CameraRecenter") == 1)
+        {
             cam.m_RecenterToTargetHeading.m_enabled = true;
-        } else {
+        }
+        else
+        {
             cam.m_RecenterToTargetHeading.m_enabled = false;
         }
     }
